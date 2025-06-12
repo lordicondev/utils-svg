@@ -1,0 +1,41 @@
+{
+    "name": "@lordicon/utils-svg",
+    "version": "0.9.0",
+    "author": "Marcin Baszczewski <marcin@baszczewski.pl> (https://www.baszczewski.pl/)",
+    "homepage": "https://lordicon.com/",
+    "repository": "https://github.com/lordicondev/utils-svg",
+    "license": "MIT",
+    "private": false,
+    "sideEffects": false,
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/**/*",
+        "README.md"
+    ],
+    "keywords": [
+        "lordicon",
+        "svg"
+    ],
+    "scripts": {
+        "start": "vite",
+        "build": "vite build --config vite-build.config.ts",
+        "prepack": "npm run build",
+        "test": "vitest"
+    },
+    "devDependencies": {
+        "@lordicon/utils-lottie": "^0.9.0",
+        "fast-xml-parser": "^4.5.0",
+        "svgo": "^3.3.2",
+        "nanoid": "^5.1.5",
+        "@types/node": "^22.9.0",
+        "typescript": "~5.6.2",
+        "vite": "^6.2.3",
+        "vite-plugin-dts": "^4.5.4",
+        "vitest": "^2.1.5"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    }
+}
