@@ -1,4 +1,7 @@
-/*.log
-/*.tgz
-node_modules
-dist
+# Node
+*.log
+*.log.*
+
+.vscode/
+node_modules/
+dist/
