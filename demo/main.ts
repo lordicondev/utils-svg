@@ -1,4 +1,4 @@
-import { metaSvg, packSvg, transformSvg, unpackSvg } from '../src';
+import { customizeSvg, metaSvg, packSvg, unpackSvg } from '../src';
 import { initSvgPreview, loadIcon, loadSvg } from './utils';
 
 const iconAData = await loadIcon('wired-lineal-2795-outlet-type-f');
@@ -63,18 +63,18 @@ const iconCSvgPack = packSvg(
     ]
 )!;
 
-const iconASvgModify1 = transformSvg(iconASvgPack, {
+const iconASvgModify1 = customizeSvg(iconASvgPack, {
     colors: {
         primary: 'red',
         secondary: 'green',
     },
 })!;
 
-const iconASvgModify2 = transformSvg(iconASvgPack, {
+const iconASvgModify2 = customizeSvg(iconASvgPack, {
     state: 'morph-single',
 })!;
 
-const iconASvgModify3 = transformSvg(iconASvgPack, {
+const iconASvgModify3 = customizeSvg(iconASvgPack, {
     state: 'morph-single',
     colors: {
         primary: 'pink',
@@ -82,12 +82,12 @@ const iconASvgModify3 = transformSvg(iconASvgPack, {
     },
 })!;
 
-const iconASvgModify4 = transformSvg(iconASvgPack, {
+const iconASvgModify4 = customizeSvg(iconASvgPack, {
     state: 'morph-single',
     stroke: 1,
 })!;
 
-const iconBSvgModify1 = transformSvg(iconBSvgPack, {
+const iconBSvgModify1 = customizeSvg(iconBSvgPack, {
     state: 'morph-detail',
     stroke: 3,
     colors: {
@@ -96,7 +96,7 @@ const iconBSvgModify1 = transformSvg(iconBSvgPack, {
     },
 })!;
 
-const iconCSvgModify1 = transformSvg(iconCSvgPack, {
+const iconCSvgModify1 = customizeSvg(iconCSvgPack, {
     state: 'morph-select',
     stroke: 2,
     colors: {
