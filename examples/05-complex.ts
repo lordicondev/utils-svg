@@ -1,4 +1,4 @@
-import { customizeSvg, metaSvg, packSvg, unpackSvg } from '../src';
+import { customizeSvg, packSvg, unpackSvg } from '../src';
 import { initSvgPreview, loadIcon, loadSvg } from './utils';
 
 const iconAData = await loadIcon('wired-lineal-2795-outlet-type-f');
@@ -132,6 +132,3 @@ initSvgPreview(icon10, iconCSvgModify1);
 const layers = unpackSvg(iconASvgPack);
 initSvgPreview(unpack1, layers[0].content);
 initSvgPreview(unpack2, layers[1].content);
-
-const meta = metaSvg(iconBSvgPack);
-document.getElementById('meta')!.innerText = JSON.stringify(meta, null, 2);

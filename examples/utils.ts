@@ -31,7 +31,7 @@ export function downloadSVG(name: string, content: string) {
     document.body.removeChild(a);
 }
 
-export function initSvgPreview(element: HTMLElement, content: string) {
+export function initSvgPreview(element: HTMLElement, content: string, title?: string) {
     const parser = new DOMParser();
     const document = parser.parseFromString(content, "image/svg+xml");
 
@@ -42,4 +42,8 @@ export function initSvgPreview(element: HTMLElement, content: string) {
 
         downloadSVG("file", content);
     });
+
+    if (title) {
+        element.setAttribute("title", title);
+    }
 }

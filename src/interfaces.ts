@@ -83,4 +83,9 @@ export interface IconProperties {
      * Stroke.
      */
     stroke?: Stroke;
+
+    /**
+     * Background color. This is a custom property that can be used to set the background color of the icon. It is not a standard property of the icon pack, but it can be used in the customizeSvg function to set the background color of the icon.
+     */
+    background?: string;
 }

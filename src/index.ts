@@ -563,6 +563,29 @@ export function customizeSvg(
         }
     }
 
+    // Add background if needed.
+    if (properties.background) {
+        const backgroundColor = parseColor(properties.background);
+
+        const backgroundRect = {
+            rect: [],
+            [A]: {
+                '@_width': '100%',
+                '@_height': '100%',
+                '@_fill': backgroundColor,
+            },
+        };
+
+        // Find the index after which to insert the background.
+        // If the first element is <defs>, we insert after it to avoid breaking definitions.
+        const defsIndex = root.svg.findIndex((node: any) => Object.keys(node)[0] === 'defs');
+        if (defsIndex !== -1) {
+            root.svg.splice(defsIndex + 1, 0, backgroundRect);
+        } else {
+            root.svg.unshift(backgroundRect);
+        }
+    }
+
     // Remove redundant attributes.
     delete root[A][A_COLORS];
     delete root[A][A_NAME];
