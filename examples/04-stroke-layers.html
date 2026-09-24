@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Stroke layers</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="data:," />
+        <link rel="stylesheet" href="./main.css" />
+        <script type="module" src="/04-stroke-layers.ts"></script>
+    </head>
+
+    <body>
+        <p><a href="/">Examples</a></p>
+        <h1>Stroke layers</h1>
+        <p>
+            A pack scales stroke widths itself (<code>stroke</code>), or holds a layer per width
+            (<code>stroke-layers</code>) when scaling does not look right. Here the light and bold
+            layers are made from the regular one, and all three packed together; the pack then picks
+            a layer by width instead of scaling.
+        </p>
+        <div class="controls">
+            <label
+                >Icon
+                <select id="icon"></select
+            ></label>
+        </div>
+        <h2>Light and bold, made from regular</h2>
+        <div id="made" class="figures"></div>
+        <h2>The pack with stroke layers, cut per width</h2>
+        <pre id="info"></pre>
+        <div id="cut" class="figures"></div>
+    </body>
+</html>

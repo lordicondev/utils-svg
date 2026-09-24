@@ -1,24 +1,16 @@
 :root {
     --palette-font: #3c3c3c;
     --palette-primary: #08c18a;
-    --palette-bg-1: hsl(50deg 34% 85%);
-    --palette-bg-2: hsl(100deg 34% 85%);
-    --palette-bg-3: hsl(150deg 34% 85%);
 
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
-    font-weight: 400;
 }
 
 body {
     margin: 0;
-    padding: 0;
-    background: #dbdbdb;
+    padding: 24px;
+    background: white;
     color: var(--palette-font);
-}
-
-img {
-    display: block;
 }
 
 a {
@@ -30,26 +22,255 @@ a:hover {
     text-decoration: underline;
 }
 
+h1 {
+    font-size: 20px;
+    margin: 0 0 16px;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 32px 0 8px;
+}
+
+p {
+    max-width: 640px;
+}
+
+code,
+pre {
+    font-family: ui-monospace, monospace;
+    font-size: 13px;
+}
+
+pre {
+    margin: 0;
+    padding: 8px 10px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+}
+
+button {
+    font: inherit;
+}
+
+lord-icon {
+    display: inline-block;
+    width: 96px;
+    height: 96px;
+}
+
+lord-icon[trigger='click'],
+.clickable {
+    cursor: pointer;
+}
+
+/* One example per row: the icon, then its code and what it does. */
+.rows {
+    max-width: 760px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.row p {
+    margin: 8px 0 0;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin: 16px 0;
+}
+
+/* Pages about scrolling: room to scroll, and a note that stays in sight. */
+.note {
+    position: sticky;
+    top: 0;
+    padding: 8px 0;
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.spacer {
+    height: 120vh;
+}
+
+/* Two icons side by side: the element's own trigger, and ours. */
+.pair {
+    display: grid;
+    grid-template-columns: 96px 96px 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e5e5;
+    max-width: 900px;
+}
+
+.pair .label {
+    font-size: 12px;
+    text-align: center;
+    color: #888;
+}
+
+.timeline {
+    max-width: 640px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.timeline input[type='range'] {
+    flex: 1;
+}
+
+.timeline output {
+    min-width: 96px;
+    font-family: ui-monospace, monospace;
+    font-size: 13px;
+}
+
+input,
+select,
+textarea {
+    font: inherit;
+    font-size: 14px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 640px;
+    font-family: ui-monospace, monospace;
+    font-size: 13px;
+}
+
+label {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+}
+
+progress {
+    width: 160px;
+}
+
+.muted {
+    color: #888;
+    font-size: 13px;
+}
+
+.error {
+    color: #d33;
+}
+
+/* Transparent pixels show as a checkerboard. */
+.checker {
+    background: repeating-conic-gradient(#eee 0% 25%, white 0% 50%) 0 / 16px 16px;
+}
+
+/* Results as cards: the file, and what it is. */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+.card img,
+.card video,
+.card .file {
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
+    align-self: center;
+}
+
+.card .file {
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+}
+
+/* Two results side by side, with a label under each. */
+.pair img,
+.pair lord-icon {
+    width: 96px;
+    height: 96px;
+}
+
+.strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: 1000px;
+}
+
+.strip figure {
+    margin: 0;
+    font-size: 11px;
+    text-align: center;
+    color: #888;
+}
+
+.strip canvas {
+    display: block;
+    width: 64px;
+    height: 64px;
+    border: 1px solid #e5e5e5;
+}
+
 table {
     border-collapse: collapse;
-    width: 100%;
+    font-size: 13px;
 }
 
-table,
 td,
 th {
-    border: 1px solid #d2d2d8;
-    padding: 10px;
+    padding: 4px 12px 4px 0;
+    text-align: left;
 }
 
-.icon {
+figure.svg {
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+    color: #888;
+}
+
+figure.svg img {
     display: block;
     width: 128px;
     height: 128px;
-    cursor: pointer;
+    border: 1px solid #e5e5e5;
+}
 
-    svg {
-        width: 128px;
-        height: 128px;
-    }
+.figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.source {
+    max-height: 240px;
+    overflow: auto;
 }

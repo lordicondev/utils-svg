@@ -1,29 +1,48 @@
-import { metaSvg, packSvg, customizeSvg } from '../src';
-import { initSvgPreview, loadIcon, loadSvg } from './utils';
+import { ICONS, bytes, examplePack, options, preview } from './main.ts';
+import { customizeSvg, readPack, type CustomizeOptions } from '../src/index.ts';
 
-const iconData = await loadIcon('wired-lineal-2795-outlet-type-f');
-const iconSvg1 = await loadSvg('wired-lineal-2795-outlet-type-f');
-const iconSvg2 = await loadSvg('wired-lineal-2795-outlet-type-f:morph-single');
+const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+const icon = $<HTMLSelectElement>('icon');
+const state = $<HTMLSelectElement>('state');
+const stroke = $<HTMLSelectElement>('stroke');
+options(icon, Object.keys(ICONS));
+options(stroke, ['(regular)', 'light', 'bold']);
 
-const pack = packSvg(
-    iconData,
-    [
-        {
-            content: iconSvg1,
-        },
-        {
-            content: iconSvg2,
-            state: ['morph-single'],
-        },
-    ]
-)!;
+let pack = '';
 
-const customized = customizeSvg(pack, {
-    colors: {
-        primary: 'red',
-        secondary: 'blue',
-    },
-    stroke: 3,
-})!;
+async function load() {
+    pack = await examplePack(icon.value);
+    const info = readPack(pack)!;
+    options(state, ['(default)', ...info.states]);
+    $('colors').replaceChildren(
+        ...Object.entries(info.colors).map(([name, value]) => {
+            const label = document.createElement('label');
+            label.innerHTML = `${name} <input type="color" name="${name}" value="${value}" />`;
+            return label;
+        }),
+    );
+    update();
+}
 
-initSvgPreview(document.getElementById('icon')!, customized);
+function update() {
+    const colors: Record<string, string> = {};
+    for (const input of $('colors').querySelectorAll('input')) colors[input.name] = input.value;
+    const settings: CustomizeOptions = {
+        ...(state.selectedIndex ? { state: state.value } : {}),
+        ...(stroke.selectedIndex ? { stroke: stroke.value as 'light' | 'bold' } : {}),
+        colors,
+        ...($<HTMLInputElement>('transparent').checked
+            ? {}
+            : { background: $<HTMLInputElement>('background').value }),
+    };
+    const svg = customizeSvg(pack, settings)!;
+    $('result').replaceChildren(preview(svg, bytes(svg)));
+    $('code').textContent = `customizeSvg(pack, ${JSON.stringify(settings, null, 4)})`;
+    $('source').textContent = svg.replace(/></g, '>\n<');
+}
+
+icon.addEventListener('change', load);
+for (const input of [state, stroke, $('colors'), $('background'), $('transparent')]) {
+    input.addEventListener('input', update);
+}
+await load();

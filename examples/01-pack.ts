@@ -1,26 +1,24 @@
-import { packSvg, unpackSvg } from '../src';
-import { initSvgPreview, loadIcon, loadSvg } from './utils';
+import { ICONS, bytes, loadIcon, loadLayer, options, preview } from './main.ts';
+import { packSvg, readPack, type PackLayer } from '../src/index.ts';
 
-const iconData = await loadIcon('wired-lineal-2795-outlet-type-f');
-const iconSvg1 = await loadSvg('wired-lineal-2795-outlet-type-f');
-const iconSvg2 = await loadSvg('wired-lineal-2795-outlet-type-f:morph-single');
+const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+const icon = $<HTMLSelectElement>('icon');
+options(icon, Object.keys(ICONS));
 
-const pack = packSvg(
-    iconData,
-    [
-        {
-            content: iconSvg1,
-        },
-        {
-            content: iconSvg2,
-            state: ['morph-single'],
-        },
-    ]
-)!;
+async function show() {
+    const layers: PackLayer[] = [{ svg: await loadLayer(icon.value) }];
+    for (const state of ICONS[icon.value]) {
+        layers.push({ svg: await loadLayer(icon.value, state), states: [state] });
+    }
+    $('layers').replaceChildren(
+        ...layers.map((layer) => preview(layer.svg, layer.states?.join(', ') ?? 'default')),
+    );
 
-initSvgPreview(document.getElementById('pack1')!, pack);
+    const pack = packSvg(await loadIcon(icon.value), layers)!;
+    $('pack').replaceChildren(preview(pack, bytes(pack)));
+    $('info').textContent = `readPack(pack) = ${JSON.stringify(readPack(pack), null, 2)}`;
+    $('source').textContent = pack.replace(/></g, '>\n<');
+}
 
-const unpack = unpackSvg(pack)!;
-
-initSvgPreview(document.getElementById('unpack1')!, unpack[0].content, unpack[0].state?.join(', ') || 'default');
-initSvgPreview(document.getElementById('unpack2')!, unpack[1].content, unpack[1].state?.join(', ') || 'default');
+icon.addEventListener('change', show);
+await show();

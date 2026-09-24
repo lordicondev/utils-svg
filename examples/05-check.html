@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Check a pack</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="data:," />
+        <link rel="stylesheet" href="./main.css" />
+        <script type="module" src="/05-check.ts"></script>
+    </head>
+
+    <body>
+        <p><a href="/">Examples</a></p>
+        <h1>Check a pack</h1>
+        <p>
+            Drop a pack of your own: what it holds, and every state at every stroke width, as
+            <code>customizeSvg()</code> cuts it.
+        </p>
+        <div class="controls">
+            <input id="file" type="file" accept=".svg,image/svg+xml" />
+            <span id="status" class="muted">or drop a file on the page</span>
+        </div>
+        <pre id="info"></pre>
+        <div id="grid"></div>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Read and unpack</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="data:," />
+        <link rel="stylesheet" href="./main.css" />
+        <script type="module" src="/02-read.ts"></script>
+    </head>
+
+    <body>
+        <p><a href="/">Examples</a></p>
+        <h1>Read and unpack</h1>
+        <p>
+            <code>readPack()</code> tells what a pack holds; <code>unpackSvg()</code> gives its
+            layers back, each an SVG of its own, optimised and with ids of its own.
+            <code>isPack()</code> tells a pack from a plain SVG.
+        </p>
+        <div class="controls">
+            <label
+                >Icon
+                <select id="icon"></select
+            ></label>
+        </div>
+        <pre id="info"></pre>
+        <div id="layers" class="figures"></div>
+    </body>
+</html>

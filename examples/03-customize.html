@@ -1,16 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <title>Customize</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="data:," />
+        <link rel="stylesheet" href="./main.css" />
+        <script type="module" src="/03-customize.ts"></script>
+    </head>
 
-<head>
-    <title>Customize</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./main.css" />
-    <script type="module" src="/03-customize.ts"></script>
-</head>
-
-<body>
-    <div class="icon" id="icon"></div>
-</body>
-
+    <body>
+        <p><a href="/">Examples</a></p>
+        <h1>Customize</h1>
+        <p>
+            <code>customizeSvg(pack, options)</code> cuts one SVG out of a pack: a state, a stroke
+            width, other colours, a background: the SVG of the icon you want.
+        </p>
+        <div class="controls">
+            <label
+                >Icon
+                <select id="icon"></select
+            ></label>
+            <label
+                >State
+                <select id="state"></select
+            ></label>
+            <label
+                >Stroke
+                <select id="stroke"></select
+            ></label>
+            <label>Background <input id="background" type="color" value="#ffffff" /></label>
+            <label><input id="transparent" type="checkbox" checked /> transparent</label>
+        </div>
+        <div class="controls" id="colors"></div>
+        <div id="result" class="figures"></div>
+        <pre id="code"></pre>
+        <pre id="source" class="source"></pre>
+    </body>
 </html>

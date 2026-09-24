@@ -1,41 +1,62 @@
 {
     "name": "@lordicon/utils-svg",
-    "version": "1.2.0",
-    "author": "Lordicon <dev@lordicon.com>",
-    "homepage": "https://lordicon.com/",
+    "version": "2.0.0",
+    "description": "Read, build and customize Lordicon SVG packs: one SVG file with every state and stroke width of an icon.",
     "repository": "https://github.com/lordicondev/utils-svg",
-    "license": "MIT",
-    "private": false,
-    "sideEffects": false,
-    "type": "module",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist/**/*",
-        "README.md"
-    ],
+    "homepage": "https://lordicon.com/",
     "keywords": [
         "lordicon",
-        "svg"
+        "svg",
+        "icon"
     ],
+    "author": "Lordicon <dev@lordicon.com>",
+    "license": "MIT",
+    "type": "module",
+    "sideEffects": false,
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE.md",
+        "CHANGELOG.md"
+    ],
+    "engines": {
+        "node": ">=20"
+    },
     "scripts": {
         "start": "vite --config vite-examples.config.ts",
         "build": "vite build",
-        "prepack": "npm run build",
-        "test": "vitest"
+        "test": "vitest run",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "check:types": "tsc --noEmit",
+        "check": "npm run check:types && npm run lint && npm run format:check",
+        "prepack": "npm run build"
+    },
+    "dependencies": {
+        "@lordicon/utils-lottie": "^2.0.0",
+        "fast-xml-parser": "^5.11.1",
+        "svgo": "^4.1.0"
     },
     "devDependencies": {
-        "@lordicon/utils-lottie": "^1.1.0",
-        "fast-xml-parser": "^4.5.0",
-        "svgo": "^3.3.2",
-        "nanoid": "^5.1.5",
-        "@types/node": "^22.9.0",
-        "typescript": "~5.6.2",
-        "vite": "^6.2.3",
-        "vite-plugin-dts": "^4.5.4",
-        "vitest": "^3.2.3"
-    },
-    "engines": {
-        "node": ">=20.0.0"
+        "@eslint/js": "^10.0.1",
+        "@types/node": "^26.6.2",
+        "eslint": "^10.11.0",
+        "globals": "^17.12.0",
+        "prettier": "^3.9.9",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.70.1",
+        "vite": "^8.3.0",
+        "vite-plugin-dts": "^5.1.1",
+        "vitest": "^5.0.1"
     }
 }

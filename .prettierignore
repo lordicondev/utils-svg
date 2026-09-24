@@ -1,0 +1,6 @@
+dist/
+examples/icons/
+test/
+package-lock.json
+LICENSE.md
+.claude/

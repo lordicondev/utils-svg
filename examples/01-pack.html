@@ -1,20 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <title>Pack</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="data:," />
+        <link rel="stylesheet" href="./main.css" />
+        <script type="module" src="/01-pack.ts"></script>
+    </head>
 
-<head>
-    <title>Pack &amp; Unpack</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./main.css" />
-    <script type="module" src="/01-pack.ts"></script>
-</head>
-
-<body>
-    <h1>Pack</h1>
-    <div class="icon" id="pack1"></div>
-    <h1>Unpack</h1>
-    <div class="icon" id="unpack1"></div>
-    <div class="icon" id="unpack2"></div>
-</body>
-
+    <body>
+        <p><a href="/">Examples</a></p>
+        <h1>Pack</h1>
+        <p>
+            <code>packSvg(icon, layers)</code> puts the layers of an icon into one SVG: the Lottie
+            file gives the name, colours and states, each layer is an SVG of the icon as exported
+            from a design tool. Only the default state shows; the other layers are hidden.
+        </p>
+        <div class="controls">
+            <label
+                >Icon
+                <select id="icon"></select
+            ></label>
+        </div>
+        <div id="layers" class="figures"></div>
+        <h2>The pack</h2>
+        <div id="pack" class="figures"></div>
+        <pre id="info"></pre>
+        <pre id="source" class="source"></pre>
+    </body>
 </html>
